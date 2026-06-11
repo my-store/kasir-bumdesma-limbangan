@@ -1,6 +1,6 @@
+import * as request from "../api/request";
 import "../../scss/templates/login.scss";
 import React, { Component } from "react";
-import * as request from "../api/request";
 
 export default class Login extends Component {
   constructor(props) {
@@ -12,9 +12,7 @@ export default class Login extends Component {
 
   openLoginForm = () => {
     this.setState({ opened: true }, () => {
-      setTimeout(() => {
-        $("#login-form .form-group input[name='username']").focus();
-      }, 1000);
+      setTimeout(() => $("input[name='username']").focus(), 1000);
     });
   };
 
@@ -24,11 +22,19 @@ export default class Login extends Component {
   };
 
   login = async () => {
-    const username = $("#login-form .form-group input[name='username']").val();
-    const password = $("#login-form .form-group input[name='password']").val();
+    let username = $("input[name='username']");
+    let password = $("input[name='password']");
+
+    // Input not detected! -> Code error | Bug
+    if (!username || !password) return;
+
+    // Set variable contain the input value (not the input object or DOM)
+    username = username.val();
+    password = password.val();
 
     if (username.length < 1 || password.length < 1) {
-      this.errorHighlight();
+      this.errorHighlight("username");
+      this.errorHighlight("password");
       return Notif.send({
         title: "Login",
         body: "Isi username dan password!",
@@ -41,6 +47,7 @@ export default class Login extends Component {
     });
 
     if (!matchedAdmin) {
+      this.errorHighlight("username");
       return Notif.send({
         title: "Login",
         body: `Admin ${username} tidak ditemukan!`,
@@ -52,6 +59,7 @@ export default class Login extends Component {
       // Cek password
       const matchedPassword = matchedAdmin.password == password;
       if (!matchedPassword) {
+        this.errorHighlight("password");
         return Notif.send({
           title: "Login",
           body: "Password salah!",
@@ -64,25 +72,16 @@ export default class Login extends Component {
     this.props.getLogin(matchedAdmin);
   };
 
-  errorHighlight = () => {
-    // Username
-    const usernameInput = $("#login-form .form-group .username");
-    if (usernameInput.val().length < 1) {
-      usernameInput.css("border", "1px solid red");
-    }
-
-    // Password
-    const passwordInput = $("#login-form .form-group .password");
-    if (passwordInput.val().length < 1) {
-      passwordInput.css("border", "1px solid red");
-    }
+  errorHighlight = (inputName) => {
+    const input = $(`input[name="${inputName}"]`);
+    input.css("border", "2px solid red");
 
     // Reset border color
     setTimeout(() => {
-      // Username
-      usernameInput.css("border", "1px solid grey");
-      // Nominal
-      passwordInput.css("border", "1px solid grey");
+      const inputs = $("#login-form input");
+      for (let i of inputs) {
+        $(i).css("border", "1px solid grey");
+      }
     }, 1000);
   };
 

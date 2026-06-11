@@ -1,28 +1,27 @@
 import { numberFormat, makeUniqueId, upperCase } from "../api/helper/string";
 import { InsertTransaksi, GetDayTransaction } from "../api/transaksi";
 import { indexOf, getThisMonth } from "../api/helper/calendar";
+import { GetLaporan } from "../api/laporan";
 import "../../scss/mesin-kasir/index.scss";
 import * as request from "../api/request";
 import { GetNeraca } from "../api/neraca";
-// import { GetHutang } from "../api/hutang";
 import { FiEdit3 } from "react-icons/fi";
 import React, { Component } from "react";
 import Pendapatan from "./pendapatan";
 import * as _myFunc from "./helpers";
 import Keranjang from "./keranjang";
 import Transaksi from "./transaksi";
+import PrintStruk from "./struk";
 import Produk from "./produk";
 import Margin from "./margin";
 import {
-  GetOneObat,
-  GetOnePupuk,
   GetOnePupukSubsidi,
-  GetPersediaan,
   UpdatePersediaan,
+  GetPersediaan,
+  GetOnePupuk,
+  GetOneObat,
 } from "../api/persediaan";
 import Kas from "./kas";
-import { GetLaporan } from "../api/laporan";
-import PrintStruk from "./struk";
 
 // Entry point
 export default class Mesin extends Component {
@@ -34,12 +33,7 @@ export default class Mesin extends Component {
         _produk: true,
         _transaksi: true,
         _pendapatan: true,
-        _kasHutang: {
-          _kas: true,
-          // _hutang: true,
-          _shareProfit_1: true,
-          _shareProfit_2: true,
-        },
+        _kas: true,
       },
 
       // Keranjang
@@ -80,13 +74,6 @@ export default class Mesin extends Component {
 
       // Uang kas s/d bulan ini
       kas: 0,
-
-      // // Total hutang s/d bulan ini
-      // hutang: 0,
-
-      // Update 2025 | Profit sharing
-      shareProfit_1: { total: 0, percent: 0 },
-      shareProfit_2: { total: 0, percent: 0 },
 
       // Pendapatan / Omset
       pendapatan: {
@@ -144,7 +131,7 @@ export default class Mesin extends Component {
   loadData = async () => {
     // Persediaan
     const { obatPertanian, pupuk, pupukSubsidi } = await GetPersediaan(
-      this.props.workTime
+      this.props.workTime,
     );
     this.__mounted__ &&
       this.setState({
@@ -159,7 +146,7 @@ export default class Mesin extends Component {
 
     // Transaksi & Omset
     const { transaksi, omset, margin } = await GetDayTransaction(
-      this.props.workTime
+      this.props.workTime,
     );
     this.__mounted__ &&
       this.setState({
@@ -190,58 +177,7 @@ export default class Mesin extends Component {
         kas,
         _isLoading: {
           ...this.state._isLoading,
-          _kasHutang: {
-            ...this.state._isLoading._kasHutang,
-            _kas: false,
-          },
-        },
-      });
-
-    // // Hutang | Removed in 2025
-    // const hutang = await GetHutang(this.props.workTime);
-    // this.__mounted__ &&
-    //   this.setState({
-    //     hutang: hutang.perolehan,
-    //     _isLoading: {
-    //       ...this.state._isLoading,
-    //       _kasHutang: {
-    //         ...this.state._isLoading._kasHutang,
-    //         _hutang: false,
-    //       },
-    //     },
-    //   });
-
-    // Share profit | Applied in 2025
-    // Get share-profit percentage
-    const _getPercentage_Profit_1 = await request.post("/db/getone", {
-      db: "Application.Settings",
-      options: { id: "hPXaJ50ceWLRgHlI" },
-    });
-    const _getPercentage_Profit_2 = await request.post("/db/getone", {
-      db: "Application.Settings",
-      options: { id: "hPXaJ50ceXLRgHlN" },
-    });
-    const { totalProfit_1, totalProfit_2 } = await GetLaporan(
-      this.props.workTime,
-      [_getPercentage_Profit_1.value, _getPercentage_Profit_2.value]
-    );
-    this.__mounted__ &&
-      this.setState({
-        shareProfit_1: {
-          total: totalProfit_1,
-          percent: _getPercentage_Profit_1.value,
-        },
-        shareProfit_2: {
-          total: totalProfit_2,
-          percent: _getPercentage_Profit_2.value,
-        },
-        _isLoading: {
-          ...this.state._isLoading,
-          _kasHutang: {
-            ...this.state._isLoading._kasHutang,
-            _shareProfit_1: false,
-            _shareProfit_2: false,
-          },
+          _kas: false,
         },
       });
   };
@@ -261,7 +197,7 @@ export default class Mesin extends Component {
     else if (id == "PupukSubsidi") {
       const pupukSubsidi = await _myFunc.cariPupukSubsidi(
         _val,
-        this.props.workTime
+        this.props.workTime,
       );
       this.__mounted__ && this.setState({ pupukSubsidi });
     }
@@ -289,7 +225,7 @@ export default class Mesin extends Component {
     }
 
     // Update 2025
-    // Reload data (Produk | Pupuk)
+    // Reload data produk
     // Barangkali user melakukan pencarian, ketika klik produk untuk masuk ke keranjang
     // harus di reset daftar obat|pupuk.
     await this.searchData(id, "");
@@ -298,7 +234,7 @@ export default class Mesin extends Component {
   increaseAmount = async (id) => {
     const { keranjang } = await _myFunc.tambahPembelian(
       id,
-      this.state.keranjang
+      this.state.keranjang,
     );
     setTimeout(() => $(".keranjang .input-jumlah-uang").focus(), 300);
     this.__mounted__ && this.setState({ keranjang });
@@ -307,7 +243,7 @@ export default class Mesin extends Component {
   decreaseAmount = async (id) => {
     const { keranjang } = await _myFunc.kurangiPembelian(
       id,
-      this.state.keranjang
+      this.state.keranjang,
     );
     setTimeout(() => $(".keranjang .input-jumlah-uang").focus(), 300);
     this.__mounted__ && this.setState({ keranjang });
@@ -316,7 +252,7 @@ export default class Mesin extends Component {
   removeFromCart = async (id) => {
     const { keranjang } = await _myFunc.hapusDariKeranjang(
       id,
-      this.state.keranjang
+      this.state.keranjang,
     );
     this.__mounted__ && this.setState({ keranjang });
 
@@ -372,13 +308,13 @@ export default class Mesin extends Component {
   setTimestamp = () => {
     _myFunc.listenTimestamp(
       (timestamp) =>
-        this.__mounted__ && timestamp && this.setState({ timestamp })
+        this.__mounted__ && timestamp && this.setState({ timestamp }),
     );
   };
 
   openOperationalForm = async () => {
     const { keranjang } = await _myFunc.openOperationalForm(
-      this.state.keranjang
+      this.state.keranjang,
     );
     this.__mounted__ && this.setState({ keranjang });
   };
@@ -456,7 +392,7 @@ export default class Mesin extends Component {
     // Loloskan jika input jumlah tidak kosong
     if (jumlahInput != "" || jumlahInput.length > 0) {
       const newKeranjangState = await _myFunc.setManualPembelian(
-        this.state.keranjang
+        this.state.keranjang,
       );
       setTimeout(() => $(".keranjang .input-jumlah-uang").focus(), 500);
       this.__mounted__ && this.setState({ ...newKeranjangState });
@@ -499,7 +435,7 @@ export default class Mesin extends Component {
         this.loadData();
       },
       "Hapus Transaksi",
-      "Stok produk akan dikembalikan"
+      "Stok produk akan dikembalikan",
     );
   };
 
@@ -568,7 +504,7 @@ export default class Mesin extends Component {
         return Notif.send({
           title: "Transaksi Penjualan",
           body: `Jumlah uang kurang Rp${numberFormat(
-            parseInt(total) - parseInt(jumlahUang)
+            parseInt(total) - parseInt(jumlahUang),
           )}.`,
         });
       }
@@ -869,10 +805,7 @@ export default class Mesin extends Component {
           <Kas
             theme={this.props.theme}
             kas={this.state.kas}
-            // hutang={this.state.hutang}
-            shareProfit_1={this.state.shareProfit_1}
-            shareProfit_2={this.state.shareProfit_2}
-            _isLoading={this.state._isLoading._kasHutang}
+            _isLoading={this.state._isLoading._kas}
           />
         </div>
       </div>

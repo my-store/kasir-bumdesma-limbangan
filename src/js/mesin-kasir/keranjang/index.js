@@ -4,52 +4,6 @@ import { numberFormat } from "../../api/helper/string";
 import React, { Component } from "react";
 
 export default class Main extends Component {
-  // Update 2025
-  // Disable all listener in 2025
-  // componentDidMount() {
-  // // Handle tombol enter pada keranjang (input jumlah uang)
-  // $(".keranjang .input-jumlah-uang").on("keyup", (_event) => {
-  //   if (_event.keyCode == 13) {
-  //     $(".keranjang .checkout .checkout-y").click();
-  //   }
-  // });
-
-  // // Handle tombol enter pada keranjang (input operasional keterangan)
-  // $(".keranjang .action .operasional .input-keterangan-operasional").on(
-  //   "keyup",
-  //   (_event) => {
-  //     if (_event.keyCode == 13) {
-  //       $(".keranjang .action .operasional .input-biaya-operasional").focus();
-  //     }
-  //   }
-  // );
-
-  // // Handle tombol enter pada keranjang (input operasional nominal)
-  // $(".keranjang .action .operasional .input-biaya-operasional").on(
-  //   "keyup",
-  //   (_event) => {
-  //     if (_event.keyCode == 13) {
-  //       if (this.props.openedTimestampForm) {
-  //         $(
-  //           ".keranjang .timestamp-container .timestamp-input input[placeholder='Tanggal']"
-  //         ).focus();
-  //       } else {
-  //         $(".keranjang .input-jumlah-uang").focus();
-  //       }
-  //     }
-  //   }
-  // );
-
-  // // Handle tombol enter pada keranjang (input tahun timestamp)
-  // $(
-  //   ".keranjang .timestamp-container .timestamp-input input[placeholder='Tahun']"
-  // ).on("keyup", (_event) => {
-  //   if (_event.keyCode == 13) {
-  //     $(".keranjang .input-jumlah-uang").focus();
-  //   }
-  // });
-  // }
-
   setChange = async (_val) => {
     await this.props.reformatNumber(_val, "input-jumlah-uang");
     this.props.setChange(_val.replace(/\,/gi, ""));
@@ -74,11 +28,11 @@ export default class Main extends Component {
             this.props.openedOperationalForm && this.props.openedTimestampForm // Keduanya terbuka
               ? { height: 184, minHeight: 184 }
               : this.props.openedOperationalForm // Biaya operasional terbuka
-              ? { height: 232, minHeight: 232 }
-              : this.props.openedTimestampForm // Timestamp terbuka
-              ? { height: 217, minHeight: 217 }
-              : // Tak satupun terbuka
-                { height: 265, minHeight: 265 }
+                ? { height: 232, minHeight: 232 }
+                : this.props.openedTimestampForm // Timestamp terbuka
+                  ? { height: 217, minHeight: 217 }
+                  : // Tak satupun terbuka
+                    { height: 265, minHeight: 265 }
           }
         >
           {this.props.keranjang.daftar.length > 0 ? (
@@ -138,7 +92,7 @@ export default class Main extends Component {
           <p className="actual-total">
             {this.props.keranjang.total > 0 ? (
               numberFormat(
-                this.props.keranjang.total + this.props.keranjang.operasional
+                this.props.keranjang.total + this.props.keranjang.operasional,
               )
             ) : (
               <span style={{ fontWeight: "normal" }}>-</span>
