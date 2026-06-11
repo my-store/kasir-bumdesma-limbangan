@@ -1,0 +1,80 @@
+@font-face {
+  font-family: mandhy;
+  src: url(../../assets/fonts/mandhy/Mandhy.ttf);
+}
+
+@font-face {
+  font-family: achivo;
+  src: url(../../assets/fonts/achivo/ArchivoBlack-Regular.ttf);
+}
+
+@font-face {
+  font-family: ubuntu-regular;
+  src: url(../../assets/fonts/ubuntu/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: ubuntu-light;
+  src: url(../../assets/fonts/ubuntu/Ubuntu-Light.ttf);
+}
+@font-face {
+  font-family: ubuntu-bold;
+  src: url(../../assets/fonts/ubuntu/Ubuntu-Bold.ttf);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(107, 107, 107);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: ubuntu-light;
+}
+
+// Disable scroll/ arrow on input[type="number"]
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* Chrome, Safari, Edge, Opera */
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  /* Firefox */
+  -moz-appearance: textfield;
+}
+
+// Cancel btn on input [type="search"]
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  #root {
+    height: 100vh;
+    .halaman {
+      height: 100vh;
+      width: 100%;
+      .loading {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

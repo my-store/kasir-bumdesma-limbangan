@@ -1,0 +1,200 @@
+.mesin-kasir {
+  width: 100%;
+  .judul {
+    text-align: center;
+    // border-bottom: 1px solid grey;
+    padding-bottom: 3px;
+    // color: rgb(51, 51, 51);
+    h1 {
+      font-size: 22px;
+      line-height: 22px;
+      padding-bottom: 5px;
+      font-family: achivo;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 17px;
+      font-family: ubuntu-bold;
+    }
+    p {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 5px;
+    }
+  }
+
+  .produk {
+    width: 100%;
+    display: flex;
+    padding: 7px 20px 0px 327px;
+  }
+
+  .input-amount {
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    padding-top: 100px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s all ease;
+    form {
+      -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+      background: white;
+      border-radius: 7px;
+      width: 250px;
+      min-width: 250px;
+      overflow: hidden;
+      h1 {
+        width: 100%;
+        height: 28px;
+        min-height: 28px;
+        font-size: 15px;
+        padding: 0px 10px 0px 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .form-title-indicator {
+          display: flex;
+          align-items: center;
+          font-size: 13px;
+        }
+      }
+      .form-group {
+        width: 100%;
+        padding: 0px 10px 0px 10px;
+        label {
+          display: block;
+          font-size: 15px;
+          padding-bottom: 5px;
+        }
+        input {
+          width: 100%;
+          font-size: 15px;
+          padding: 0px 5px 0px 5px;
+          outline: none;
+          border-radius: 4px;
+          height: 30px;
+          min-height: 30px;
+          border: 1px solid grey;
+          margin-bottom: 7px;
+          text-align: left;
+        }
+        .timestamp-input {
+          display: flex;
+          align-items: center;
+          .spacer {
+            display: inline-block;
+            width: 5px;
+            min-width: 5px;
+            height: 100%;
+          }
+        }
+        .timestamp-preview {
+          display: block;
+          height: 25px;
+          min-height: 25px;
+          line-height: 25px;
+          padding: 0px 5px 0px 5px;
+          background-color: rgb(240, 240, 240);
+          font-size: 13px;
+          text-align: center;
+        }
+      }
+      .harga {
+        display: flex;
+        align-items: center;
+        // .jual {
+        //   width: 20%;
+        // }
+        // .pokok {
+        //   width: 20%;
+        // }
+        .spacer {
+          display: inline-block;
+          width: 5px;
+          min-width: 5px;
+        }
+      }
+      .form-btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 5px 10px;
+        .spacer {
+          display: inline-block;
+          width: 10px;
+          min-width: 10px;
+        }
+        button {
+          outline: none;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+          width: 50%;
+          height: 28px;
+          min-height: 28px;
+          background: none;
+          border-bottom: 1px solid grey;
+          &:hover,
+          &:focus {
+            opacity: 0.7;
+          }
+          &:active {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+  .input-amount-active {
+    visibility: visible;
+    opacity: 1;
+    padding-top: 0px;
+  }
+  .transaksi-pendapatan-kas {
+    width: 100%;
+    display: flex;
+    padding: 7px 20px 0px 327px;
+  }
+
+  .print-struk-container {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s all ease;
+    padding-top: 100px;
+
+    .print-struk-box {
+      background-color: white;
+      border-radius: 5px;
+      padding: 70px 30px 70px 30px;
+    }
+  }
+  .print-struk-container-active {
+    visibility: visible;
+    opacity: 1;
+    padding-top: 0px;
+  }
+}

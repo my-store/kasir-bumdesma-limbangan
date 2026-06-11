@@ -1,0 +1,116 @@
+.laporan-print-page {
+  width: 210mm;
+  min-width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 70px 20px 70px;
+  .lpp-head {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0px 10px 0px;
+    border-bottom: 1px solid black;
+    .logo-upk,
+    .logo-dana {
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
+      min-height: 70px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .logo-upk {
+      background-size: 53px 53px;
+      background-image: url(../../../../assets/icons/logo-upk.png);
+    }
+    .logo-dana {
+      background-size: 63px 63px;
+      background-image: url(../../../../assets/icons/logo-dana.png);
+    }
+    .title {
+      width: 100%;
+      h1 {
+        font-family: achivo;
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  .lpp-body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .lpp-body-title-rugiLaba {
+      width: 100%;
+      font-size: 10px;
+      margin-top: 20px;
+      background-color: #b1b1b1;
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+      border: 1px solid black;
+      border-bottom: none;
+    }
+    .lpp-body-title-neraca {
+      width: 100%;
+      font-size: 10px;
+      margin-top: 20px;
+      background-color: #b1b1b1;
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+      border: 1px solid black;
+      border-bottom: none;
+    }
+  }
+  .lpp-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 40px;
+    .pf-left {
+      p {
+        font-size: 10px;
+      }
+      h1 {
+        font-size: 10px;
+      }
+      p:nth-child(1) {
+        margin-bottom: 70px;
+      }
+    }
+    .pf-right {
+      p {
+        font-size: 10px;
+      }
+      h1 {
+        font-size: 10px;
+      }
+      p:nth-child(1) {
+        margin-bottom: 70px;
+      }
+    }
+  }
+  .lpp-footer-app {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #b1b1b1;
+    border: 1px solid black;
+    p {
+      font-size: 10px;
+    }
+  }
+}

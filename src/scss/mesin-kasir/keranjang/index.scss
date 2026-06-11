@@ -1,0 +1,336 @@
+.mesin-kasir {
+  .keranjang {
+    position: absolute;
+    width: 300px;
+    min-width: 300px;
+    transform: translate(20px, 7px);
+    overflow: hidden;
+    height: 473px;
+    background-color: rgb(235, 235, 235);
+    .title {
+      color: white;
+      font-size: 13px;
+      height: 25px;
+      min-height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 5px 0px 5px;
+      span:nth-child(1) {
+        letter-spacing: 1px;
+      }
+    }
+    .list {
+      transition: 0.2s all ease;
+      width: 100%;
+      padding: 7px 7px 0px 7px;
+      border-bottom: 1px solid rgb(187, 187, 187);
+      overflow-x: hidden;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      .list-item {
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+        background: white;
+        margin-bottom: 7px;
+        padding: 5px 5px 0px 5px;
+
+        // Disable text selecting
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        user-select: none;
+
+        &:hover {
+          -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+        }
+        p {
+          min-height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+        }
+        .list-item-head {
+          border-bottom: 1px solid rgb(187, 187, 187);
+          padding-bottom: 5px;
+          .list-action {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .list-item-price {
+          color: rgb(87, 87, 87);
+        }
+      }
+      .empty-data {
+        font-size: 14px;
+        display: block;
+        height: 90%;
+        color: grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+    .tagihan {
+      height: 30px;
+      min-height: 30px;
+      line-height: 28px;
+      text-align: center;
+      padding: 0px 7px 0px 7px;
+      background-color: rgb(235, 235, 235);
+      border-bottom: 1px solid rgb(187, 187, 187);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .placeholder-total {
+        font-size: 15px;
+        color: green;
+      }
+      .actual-total {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: ubuntu-bold;
+      }
+      .operasional-total {
+        font-size: 15px;
+        color: red;
+      }
+    }
+    .action {
+      width: 100%;
+      background-color: rgb(235, 235, 235);
+      .operasional {
+        padding: 5px;
+        width: 100%;
+        border-bottom: 1px solid rgb(187, 187, 187);
+        .form-group {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          input {
+            outline: none;
+            border: 1px solid rgb(187, 187, 187);
+          }
+          label {
+            font-size: 14px;
+            padding-left: 5px;
+          }
+        }
+        .form {
+          width: 100%;
+          .operational-form {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 0px;
+            min-height: 0px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s all ease;
+            input {
+              width: 50%;
+              height: 28px;
+              min-height: 28px;
+              padding: 0px 5px 0px 5px;
+            }
+            .spacer {
+              display: block;
+              width: 5px;
+              min-width: 5px;
+              height: 100%;
+            }
+          }
+          .operational-form-active {
+            visibility: visible;
+            opacity: 1;
+            padding-top: 5px;
+            height: 33px;
+            min-height: 33px;
+          }
+          .select-operasional {
+            transition: 0.2s all ease;
+            border-radius: 4px;
+            position: absolute;
+            width: 290px;
+            min-width: 290px;
+            transform: translateY(50px);
+            padding: 5px;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.5);
+            background: white;
+            p {
+              padding: 0px 10px 0px 10px;
+              height: 25px;
+              min-height: 25px;
+              font-size: 14px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              &:hover {
+                background: rgb(241, 241, 241);
+              }
+            }
+          }
+          .select-operasional-active {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(10px);
+          }
+        }
+      }
+      .timestamp-container {
+        width: 100%;
+        border-bottom: 1px solid rgb(187, 187, 187);
+        .timestamp-btn {
+          padding: 5px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          .check-timestamp {
+            margin-right: 5px;
+          }
+          label {
+            display: block;
+            font-size: 14px;
+          }
+        }
+        .hidden-timestamp {
+          height: 0px;
+          min-height: 0px;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s all ease;
+          .timestamp-input {
+            display: flex;
+            align-items: center;
+            .spacer {
+              display: block;
+              width: 5px;
+              min-width: 5px;
+              height: 100%;
+            }
+            input {
+              width: 100%;
+              outline: none;
+              height: 28px;
+              min-height: 28px;
+              padding: 0px 5px 0px 5px;
+              font-size: 14px;
+              border: 1px solid rgb(187, 187, 187);
+            }
+          }
+          .timestamp-preview {
+            font-size: 13.3px;
+            color: rgb(92, 92, 92);
+            padding: 5px 0px 5px 0px;
+            text-align: center;
+          }
+        }
+        .hidden-timestamp-active {
+          visibility: visible;
+          opacity: 1;
+          height: 48px;
+          min-height: 48px;
+          padding: 0px 5px 0px 5px;
+        }
+      }
+      .kembalian {
+        width: 100%;
+        padding: 7px 5px 5px 5px;
+        .form-group {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          label {
+            display: block;
+            font-size: 14px;
+            padding-bottom: 5px;
+          }
+          input {
+            width: 100%;
+            outline: none;
+            height: 28px;
+            min-height: 28px;
+            padding: 0px 5px 0px 5px;
+            font-size: 14px;
+            border: 1px solid rgb(187, 187, 187);
+          }
+          .spacer {
+            display: block;
+            width: 5px;
+            min-width: 5px;
+            height: 100%;
+          }
+          .jumlah-uang {
+            width: 50%;
+          }
+          .uang-kembalian {
+            width: 50%;
+            .jumlah-kembalian {
+              height: 28px;
+              min-height: 28px;
+              line-height: 26px;
+              font-size: 15px;
+              padding: 0px 5px 0px 5px;
+              color: rgb(129, 129, 129);
+              border: 1px solid rgb(187, 187, 187);
+            }
+          }
+        }
+      }
+      .checkout {
+        width: 100%;
+        padding: 3px 5px 7px 5px;
+        .form-group {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          .spacer {
+            display: block;
+            width: 5px;
+            min-width: 5px;
+            height: 100%;
+          }
+          button {
+            cursor: pointer;
+            height: 28px;
+            min-height: 28px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            border: none;
+            &:active {
+              font-size: 13px;
+            }
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+          .checkout-y {
+            width: 70%;
+            border-radius: 14px 0px 0px 14px;
+          }
+          .checkout-n {
+            width: 30%;
+            border-radius: 0px 14px 14px 0px;
+          }
+        }
+      }
+    }
+  }
+}

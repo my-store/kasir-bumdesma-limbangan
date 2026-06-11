@@ -1,0 +1,94 @@
+.mesin-kasir {
+  .produk {
+    .pupuk-subsidi {
+      width: 100%;
+      overflow: hidden;
+      background-color: rgb(235, 235, 235);
+      h1 {
+        color: white;
+        font-size: 13px;
+        height: 25px;
+        min-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 5px 0px 5px;
+        span:nth-child(1) {
+          letter-spacing: 1px;
+        }
+        .title-indicator {
+          font-weight: normal;
+          display: flex;
+          align-items: center;
+        }
+      }
+      .list {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 157px;
+        min-height: 157px;
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+        p {
+          padding: 0px 5px 0px 5px;
+          height: 25px;
+          min-height: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &:not(.empty-data) {
+            font-size: 14px;
+            cursor: pointer;
+            &:hover {
+              background: rgb(223, 223, 223);
+            }
+            &:active {
+              background: rgb(197, 197, 197);
+            }
+          }
+          .item-indicator {
+            font-size: 13px;
+          }
+          .empty-stok {
+            color: rgb(219, 59, 112);
+          }
+        }
+        .empty-data {
+          font-size: 14px;
+          display: block;
+          height: 90%;
+          color: grey;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .search-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        .search-icon {
+          position: absolute;
+          transform: translateX(8px);
+          opacity: 0.7;
+        }
+        input {
+          width: 100%;
+          height: 30px;
+          min-height: 30px;
+          outline: none;
+          padding: 0px 10px 0px 28px;
+          border-radius: 15px;
+          border: none;
+          -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+          -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.3);
+          background: white;
+        }
+      }
+    }
+  }
+}

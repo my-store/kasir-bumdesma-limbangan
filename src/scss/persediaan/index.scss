@@ -1,0 +1,290 @@
+.persediaan {
+  .judul {
+    text-align: center;
+    // border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+    // color: rgb(51, 51, 51);
+    h1 {
+      font-size: 22px;
+      line-height: 22px;
+      padding-bottom: 5px;
+      font-family: achivo;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 17px;
+      font-family: ubuntu-bold;
+    }
+    p {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 5px;
+    }
+  }
+  .tabel {
+    padding: 0px 20px 0px 20px;
+    .th {
+      display: flex;
+      color: white;
+      margin-top: 15px;
+      p {
+        font-size: 14px;
+        height: 25px;
+        min-height: 25px;
+        line-height: 25px;
+      }
+      .tanggal,
+      .qty,
+      .aksi,
+      .satuan {
+        text-align: center;
+      }
+    }
+    .td {
+      background: rgb(240, 240, 240);
+      height: 170px;
+      min-height: 170px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      .tr-td {
+        display: flex;
+        cursor: default;
+        &:hover > p {
+          background: rgb(220, 220, 220);
+        }
+        p {
+          padding: 5px 0px 5px 0px;
+          min-width: 28px;
+          font-size: 14px;
+          border-bottom: 1px solid rgb(202, 202, 202);
+          span {
+            line-height: 22px;
+            display: block;
+          }
+        }
+        .tanggal,
+        .qty,
+        .satuan {
+          text-align: center;
+        }
+        .harga-pokok {
+          background: rgb(255, 219, 241);
+        }
+        .harga-perolehan {
+          background: rgb(222, 255, 219);
+        }
+        .aksi {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .empty-table {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 170px;
+        max-height: 170px;
+        color: grey;
+        font-size: 14px;
+      }
+    }
+
+    .no {
+      width: 60px;
+      min-width: 60px;
+      padding: 0px 5px 0px 5px;
+    }
+    .keterangan {
+      width: 450px;
+      min-width: 450px;
+    }
+    .tanggal {
+      width: 230px;
+      min-width: 230px;
+    }
+    .qty {
+      width: 70px;
+      min-width: 70px;
+    }
+    .satuan {
+      width: 115px;
+      min-width: 115px;
+    }
+    .harga-pokok {
+      width: 150px;
+      min-width: 150px;
+      text-align: right;
+    }
+    .harga-perolehan {
+      width: 150px;
+      min-width: 150px;
+      text-align: right;
+    }
+    .aksi {
+      width: 70px;
+      min-width: 70px;
+    }
+
+    .presentasi {
+      width: 100%;
+      display: flex;
+    }
+
+    .form-container {
+      width: 100%;
+      background: rgba($color: #000000, $alpha: 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      z-index: 5;
+      padding-top: 100px;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s all ease;
+      form {
+        -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+        background: white;
+        border-radius: 7px;
+        width: 300px;
+        min-width: 300px;
+        overflow: hidden;
+        h1 {
+          width: 100%;
+          height: 28px;
+          min-height: 28px;
+          padding: 0px 10px 0px 10px;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+          margin-bottom: 10px;
+          span:not(.form-title-indicator) {
+            letter-spacing: 1px;
+          }
+          .form-title-indicator {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+          }
+        }
+        .form-group {
+          width: 100%;
+          padding: 0px 10px 0px 10px;
+          label {
+            display: block;
+            font-size: 15px;
+            padding-bottom: 5px;
+          }
+
+          input:not(input[type="checkbox"]) {
+            width: 100%;
+            font-size: 15px;
+            padding: 0px 5px 0px 5px;
+            outline: none;
+            border-radius: 4px;
+            height: 30px;
+            min-height: 30px;
+            border: 1px solid grey;
+            margin-bottom: 7px;
+            text-align: left;
+          }
+
+          input:is(input[type="checkbox"]) {
+            cursor: pointer;
+          }
+          .update-timestamp-trigger {
+            cursor: pointer;
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+
+          .timestamp-input {
+            display: flex;
+            align-items: center;
+            visibility: hidden;
+            height: 0px;
+            opacity: 0;
+            transition: 0.2s all ease;
+            .spacer {
+              display: block;
+              width: 5px;
+              min-width: 5px;
+              height: 100%;
+            }
+          }
+          .timestamp-input-active {
+            visibility: visible;
+            opacity: 1;
+            height: 37px;
+          }
+
+          .timestamp-preview {
+            display: block;
+            height: 25px;
+            min-height: 25px;
+            line-height: 25px;
+            padding: 0px 5px 0px 5px;
+            background-color: rgb(240, 240, 240);
+            font-size: 13px;
+            text-align: center;
+          }
+        }
+        .harga {
+          display: flex;
+          align-items: center;
+          .spacer {
+            display: inline-block;
+            width: 5px;
+            min-width: 5px;
+          }
+        }
+        .form-btns {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 10px 5px 10px;
+          .spacer {
+            display: inline-block;
+            width: 10px;
+            min-width: 10px;
+          }
+          button {
+            outline: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            width: 50%;
+            height: 28px;
+            min-height: 28px;
+            background: none;
+            border-bottom: 1px solid grey;
+            &:hover,
+            &:focus {
+              opacity: 0.7;
+            }
+            &:active {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+    .form-container-active {
+      visibility: visible;
+      opacity: 1;
+      padding-top: 0px;
+    }
+  }
+}

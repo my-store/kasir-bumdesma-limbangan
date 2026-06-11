@@ -1,0 +1,146 @@
+.inventaris {
+  .judul {
+    text-align: center;
+    padding-bottom: 5px;
+    h1 {
+      font-size: 22px;
+      line-height: 22px;
+      padding-bottom: 5px;
+      font-family: achivo;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 17px;
+      font-family: ubuntu-bold;
+    }
+    p {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 5px;
+    }
+  }
+  .tabel {
+    padding: 5px 20px 0px 20px;
+    .th {
+      display: flex;
+      color: white;
+      p {
+        font-size: 14px;
+        height: 25px;
+        min-height: 25px;
+        line-height: 25px;
+      }
+      .tanggal,
+      .unit,
+      .aksi {
+        text-align: center;
+      }
+    }
+    .td {
+      background: rgb(240, 240, 240);
+      height: 420px;
+      max-height: 420px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      .tr-td {
+        display: flex;
+        cursor: default;
+        &:hover > p {
+          background: rgb(220, 220, 220);
+        }
+        p {
+          display: block;
+          padding: 5px 0px 5px 0px;
+          min-width: 28px;
+          font-size: 14px;
+          border-bottom: 1px solid rgb(202, 202, 202);
+        }
+        .tanggal,
+        .unit {
+          text-align: center;
+        }
+        .harga-satuan {
+          padding-right: 5px;
+        }
+        .harga-perolehan {
+          padding-right: 5px;
+        }
+        .aksi {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .empty-table {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 420px;
+        max-height: 420px;
+        color: grey;
+        font-size: 14px;
+      }
+    }
+
+    .no {
+      width: 70px;
+      min-width: 70px;
+      padding: 0px 5px 0px 5px;
+    }
+    .jenis {
+      width: 380px;
+      min-width: 380px;
+    }
+    .tanggal {
+      width: 230px;
+      min-width: 230px;
+    }
+    .unit {
+      width: 80px;
+      min-width: 80px;
+    }
+    .harga-satuan {
+      width: 170px;
+      min-width: 170px;
+      text-align: right;
+    }
+    .harga-perolehan {
+      width: 170px;
+      min-width: 170px;
+      text-align: right;
+    }
+    .aksi {
+      width: 80px;
+      min-width: 80px;
+    }
+
+    .total {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      min-height: 30px;
+      line-height: 30px;
+      .label {
+        font-family: ubuntu-bold;
+        font-size: 17px;
+      }
+      .action {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7;
+        }
+        p {
+          font-size: 13px;
+          font-weight: bold;
+          padding-left: 2px;
+        }
+      }
+    }
+  }
+}

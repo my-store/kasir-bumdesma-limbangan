@@ -1,0 +1,177 @@
+.neraca {
+  .judul {
+    text-align: center;
+    // border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+    // color: rgb(51, 51, 51);
+    h1 {
+      font-size: 22px;
+      line-height: 22px;
+      padding-bottom: 5px;
+      font-family: achivo;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 17px;
+      font-family: ubuntu-bold;
+    }
+    p {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 5px;
+    }
+  }
+  .tabel {
+    padding: 5px 20px 0px 20px;
+    .th {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      border-bottom: 1px solid white;
+      // padding-bottom: 5px;
+      p {
+        font-size: 14px;
+        height: 25px;
+        min-height: 25px;
+        line-height: 25px;
+        text-align: center;
+        width: 50%;
+        letter-spacing: 1px;
+      }
+    }
+    .rp {
+      color: white;
+      text-align: right;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0px 5px 0px;
+      p {
+        display: block;
+        width: 50%;
+        font-size: 14px;
+        line-height: 17px;
+        padding-right: 10px;
+      }
+    }
+    .td {
+      background-color: rgb(240, 240, 240);
+      display: flex;
+      .aktiva {
+        width: 50%;
+        height: 100%;
+        .tr-th-aktiva {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          background-color: rgb(202, 202, 202);
+          padding: 5px;
+          margin-bottom: 5px;
+          p {
+            font-size: 14px;
+          }
+        }
+        .tr-td-aktiva {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          p {
+            display: block;
+            font-size: 15px;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+          .total-persediaan {
+            width: 100%;
+            text-align: right;
+            font-weight: bold;
+            border-top: 1px solid grey;
+            padding-top: 5px;
+          }
+          .total-aktiva {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            justify-content: space-between;
+
+            // Update 20025
+            margin-top: 15px;
+
+            strong {
+              font-family: ubuntu-bold;
+              &:nth-child(1) {
+                text-align: right;
+                display: block;
+                width: 61%;
+              }
+            }
+          }
+        }
+      }
+      .pasiva {
+        width: 50%;
+        height: 100%;
+        border-left: 1px solid grey;
+        .tr-th-pasiva {
+          display: block;
+          width: 100%;
+          background-color: rgb(202, 202, 202);
+          padding: 5px;
+          margin-bottom: 5px;
+          font-size: 14px;
+        }
+        .rugi-laba {
+          // Update 20025
+          margin-top: 219px;
+        }
+        .tr-td-pasiva {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          p {
+            display: block;
+            font-size: 15px;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+          .total-pasiva {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: 86px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            justify-content: space-between;
+
+            strong {
+              font-family: ubuntu-bold;
+              &:nth-child(1) {
+                text-align: right;
+                display: block;
+                width: 61%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .total {
+      text-align: right;
+      width: 1100px;
+      display: block;
+      font-weight: bold;
+      height: 30px;
+      min-height: 30px;
+      line-height: 30px;
+    }
+  }
+}

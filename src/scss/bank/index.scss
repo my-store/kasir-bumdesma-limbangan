@@ -1,0 +1,125 @@
+.bank {
+  .judul {
+    text-align: center;
+    padding-bottom: 5px;
+    h1 {
+      font-size: 22px;
+      line-height: 22px;
+      padding-bottom: 5px;
+      font-family: achivo;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 17px;
+      font-family: ubuntu-bold;
+    }
+    p {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 5px;
+    }
+  }
+  .tabel {
+    padding: 5px 20px 0px 20px;
+    .th {
+      display: flex;
+      color: white;
+      p {
+        font-size: 14px;
+        height: 25px;
+        min-height: 25px;
+        line-height: 25px;
+      }
+    }
+    .td {
+      background: rgb(240, 240, 240);
+      height: 420px;
+      max-height: 420px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      .tr-td {
+        display: flex;
+        cursor: default;
+        &:hover > p {
+          background: rgb(220, 220, 220);
+        }
+        p {
+          display: block;
+          padding: 5px 0px 5px 0px;
+          min-width: 28px;
+          font-size: 14px;
+          border-bottom: 1px solid rgb(202, 202, 202);
+        }
+      }
+      .empty-table {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 420px;
+        max-height: 420px;
+        color: grey;
+        font-size: 14px;
+      }
+    }
+
+    .no {
+      width: 70px;
+      min-width: 70px;
+      padding-left: 5px !important;
+    }
+    .keterangan {
+      width: 400px;
+      min-width: 400px;
+    }
+    .tanggal {
+      width: 270px;
+      min-width: 270px;
+      text-align: center;
+    }
+    .nominal {
+      width: 200px;
+      min-width: 200px;
+      text-align: right;
+    }
+    .aksi {
+      text-align: center;
+      width: 80px;
+      min-width: 80px;
+    }
+
+    .total {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      min-height: 30px;
+      .label {
+        font-family: ubuntu-bold;
+        font-size: 17px;
+      }
+      .action {
+        display: flex;
+        align-items: center;
+        * {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:not(:nth-child(1)) {
+            margin-left: 7px;
+          }
+          &:hover {
+            opacity: 0.7;
+          }
+          p {
+            padding-left: 2px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.mesin-kasir {
+  .transaksi-pendapatan-kas {
+    .pendapatan {
+      width: 15%;
+      margin-left: 7px;
+      h1 {
+        color: white;
+        height: 25px;
+        min-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 5px 0px 5px;
+        span {
+          display: flex;
+          align-items: center;
+          span:nth-child(1) {
+            font-size: 13px;
+            letter-spacing: 1px;
+          }
+          span:nth-last-child(1) {
+            font-weight: normal;
+            font-size: 12px;
+            padding-left: 3px;
+          }
+        }
+      }
+      .list {
+        width: 100%;
+        padding: 5px;
+        color: rgb(46, 46, 46);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        p {
+          width: 100%;
+          text-align: right;
+        }
+        .list-head {
+          font-size: 13px;
+          padding-bottom: 5px;
+          color: rgb(83, 83, 83);
+        }
+        .list-item {
+          font-weight: bold;
+          font-size: 16px;
+          font-family: ubuntu-bold;
+        }
+      }
+      .obatPertanian {
+        height: 50px;
+        min-height: 50px;
+        background-color: rgb(255, 234, 196);
+      }
+      .pupuk {
+        height: 50px;
+        min-height: 50px;
+        background-color: rgb(251, 255, 198);
+      }
+      .totalPendapatan {
+        height: 52px;
+        min-height: 52px;
+        background-color: rgb(255, 220, 237);
+      }
+      .spacer {
+        height: 6px;
+        min-height: 6px;
+        width: 100%;
+      }
+    }
+  }
+}

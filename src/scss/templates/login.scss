@@ -1,0 +1,118 @@
+.login-page {
+  height: 100vh;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s all ease;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  form {
+    -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+    background: white;
+    border-radius: 7px;
+    width: 280px;
+    min-width: 280px;
+    overflow: hidden;
+    h1 {
+      width: 100%;
+      height: 28px;
+      min-height: 28px;
+      padding: 0px 10px 0px 10px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 10px;
+      span:not(.form-title-indicator) {
+        letter-spacing: 1px;
+      }
+      .form-title-indicator {
+        display: flex;
+        align-items: center;
+        font-weight: normal;
+      }
+    }
+    .form-group {
+      padding: 0px 10px 0px 10px;
+      label {
+        display: block;
+        font-size: 15px;
+        padding-bottom: 5px;
+      }
+      input:not(input[type="radio"], input[type="checkbox"]) {
+        width: 100%;
+        font-size: 15px;
+        padding: 0px 5px 0px 5px;
+        outline: none;
+        border-radius: 4px;
+        height: 30px;
+        min-height: 30px;
+        border: 1px solid grey;
+        margin-bottom: 7px;
+      }
+      .operasional-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        .operasional-item {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
+          p {
+            font-size: 14px;
+            padding-left: 5px;
+          }
+        }
+      }
+    }
+    .form-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 10px 5px 10px;
+      .spacer {
+        display: block;
+        width: 10px;
+        min-width: 10px;
+      }
+      button {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        width: 50%;
+        height: 28px;
+        min-height: 28px;
+        background: none;
+        border-bottom: 1px solid grey;
+        &:hover,
+        &:focus {
+          opacity: 0.7;
+        }
+        &:active {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.login-page-active {
+  visibility: visible;
+  opacity: 1;
+  padding-top: 0px;
+}

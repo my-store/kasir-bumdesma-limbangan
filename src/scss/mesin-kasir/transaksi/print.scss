@@ -1,0 +1,214 @@
+.transaksi-print {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0px 20px 0px;
+
+  .transaksi-print-head {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+    .transaksi-print-head-title {
+      font-size: 16px;
+      line-height: 16px;
+      font-family: achivo;
+      padding-bottom: 5px;
+    }
+    .transaksi-print-head-sub-title {
+      &:not(.page-indicator) {
+        font-size: 13px;
+        line-height: 13px;
+        font-family: ubuntu-bold;
+      }
+    }
+  }
+
+  .transaksi-print-body {
+    width: 195mm;
+    min-width: 195mm;
+    height: 100%;
+    display: flex;
+
+    .transaksi-print-body-left {
+      width: 60%;
+      .transaksi-table {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        .transaksi-table-head {
+          width: 100%;
+          .transaksi-table-head-title {
+            font-size: 13px;
+            font-family: achivo;
+            border-bottom: 1px solid black;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            text-align: center;
+          }
+        }
+        .transaksi-table-body {
+          width: 100%;
+          .transaksi-table-body-item {
+            font-size: 13px;
+            &:not(.transaksi-table-body-item:nth-last-child(1)) {
+              padding: 3px 0px 3px 0px;
+              border-bottom: 1px solid grey;
+            }
+            .product {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .name {
+                width: 100%;
+              }
+              .qty {
+                text-align: right;
+                width: 30mm;
+                min-width: 30mm;
+              }
+              .price {
+                text-align: right;
+                width: 35mm;
+                min-width: 35mm;
+              }
+            }
+          }
+
+          .transaksi-table-body-total {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            padding-top: 5px;
+            font-weight: bold;
+            .transaksi-table-body-total-label {
+              font-family: achivo;
+            }
+            .transaksi-table-body-total-body {
+              text-align: right;
+              font-family: achivo;
+            }
+          }
+        }
+      }
+    }
+
+    .transaksi-print-body-right {
+      width: 40%;
+      .omset-table {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        .omset-table-head {
+          width: 100%;
+          .omset-table-head-title {
+            font-size: 13px;
+            font-family: achivo;
+            border-bottom: 1px solid black;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            text-align: center;
+          }
+        }
+        .omset-table-body {
+          width: 100%;
+          .omset-table-body-obat {
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+          }
+          .omset-table-body-pupuk {
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+          }
+          .omset-table-body-total {
+          }
+          .label {
+          }
+          .content {
+            font-family: achivo;
+          }
+          p {
+            font-size: 13px;
+          }
+        }
+      }
+      .margin-table {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        .margin-table-head {
+          width: 100%;
+          .margin-table-head-title {
+            font-size: 13px;
+            font-family: achivo;
+            border-bottom: 1px solid black;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            text-align: center;
+          }
+        }
+        .margin-table-body {
+          width: 100%;
+          .margin-table-body-obat {
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+          }
+          .margin-table-body-pupuk {
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+          }
+          .margin-table-body-total {
+          }
+          .label {
+          }
+          .content {
+            font-family: achivo;
+          }
+          p {
+            font-size: 13px;
+          }
+        }
+      }
+      .kas-table {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        .kas-table-head {
+          width: 100%;
+          .kas-table-head-title {
+            font-size: 13px;
+            font-family: achivo;
+            border-bottom: 1px solid black;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            text-align: center;
+          }
+        }
+        .kas-table-body {
+          width: 100%;
+          .content {
+            font-family: achivo;
+          }
+          p {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    .spacer {
+      display: block;
+      width: 5px;
+      min-width: 5px;
+    }
+  }
+}

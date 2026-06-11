@@ -1,0 +1,181 @@
+.persediaan {
+  .tabel {
+    .presentasi {
+      .obat {
+        width: 50%;
+        padding: 5px 0px 0px 5px;
+        .title {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 25px;
+          min-height: 25px;
+          color: white;
+          padding: 0px 5px 0px 5px;
+          font-size: 14px;
+          .stok {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .obat-list {
+          width: 100%;
+          overflow-x: hidden;
+          overflow-y: scroll;
+          height: 250px;
+          min-height: 250px;
+          background: rgb(240, 240, 240);
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          p {
+            padding: 0px 5px 0px 5px;
+            font-size: 14px;
+            line-height: 14px;
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 25px;
+            min-height: 25px;
+            &:not(.empty-table) {
+              border-bottom: 1px solid rgb(240, 240, 240);
+            }
+            &:hover:not(.empty-table) {
+              background: rgb(233, 233, 233);
+            }
+            span {
+              display: flex;
+              align-items: center;
+              .action-box {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 25px;
+                min-height: 25px;
+                margin-right: 10px;
+              }
+            }
+          }
+          .empty-table {
+            height: 250px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: grey;
+            font-size: 14px;
+          }
+        }
+
+        .aksi {
+          width: 100%;
+          display: flex;
+          .btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-top: 5px;
+            .button {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              &:hover {
+                opacity: 0.7;
+              }
+              p {
+                font-size: 13px;
+                padding-left: 2px;
+                font-weight: bold;
+              }
+            }
+            .spacer {
+              height: 100%;
+              width: 15px;
+              min-width: 15px;
+            }
+          }
+
+          .search-obat-pertanian-container {
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s all ease;
+            position: absolute;
+            padding-top: 50px;
+            .search-obat-pertanian {
+              width: 312px;
+              min-width: 312px;
+              border-radius: 7px;
+              padding: 5px 5px 7px 5px;
+              -webkit-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+              -moz-box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+              box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.75);
+              background: white;
+              label {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-style: 14px;
+                margin-bottom: 5px;
+                padding: 0px 10px 0px 10px;
+              }
+              input {
+                width: 100%;
+                height: 30px;
+                min-height: 30px;
+                outline: none;
+                padding: 0px 10px 0px 10px;
+                font-style: 14px;
+                border: 1px solid rgb(206, 206, 206);
+                border-radius: 15px;
+              }
+            }
+          }
+          .search-obat-pertanian-container-active {
+            visibility: visible;
+            opacity: 1;
+            padding-top: 0px;
+          }
+        }
+
+        .print-container {
+          width: 100%;
+          height: 100%;
+          zoom: 50%;
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          z-index: 5;
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.3s all ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 100px;
+          .print-box {
+            background-color: white;
+            border-radius: 10px;
+            width: 210mm;
+            min-width: 210mm;
+            height: 297mm;
+            min-height: 297mm;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+              width: 0px;
+            }
+          }
+        }
+        .print-container-active {
+          visibility: visible;
+          opacity: 1;
+          padding-top: 0px;
+        }
+      }
+    }
+  }
+}

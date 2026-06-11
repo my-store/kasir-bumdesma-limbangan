@@ -1,0 +1,49 @@
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  .footer-left {
+    display: flex;
+    align-items: center;
+    .footer-head {
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+    }
+    .github {
+      display: flex;
+      align-items: center;
+    }
+    .phone {
+      display: flex;
+      align-items: center;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+  .footer-right {
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+    }
+    // .footer-theme {
+    // }
+    .footer-worktime {
+      margin-left: 10px;
+    }
+  }
+}
