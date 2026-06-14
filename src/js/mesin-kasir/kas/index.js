@@ -25,12 +25,11 @@ export default class Main extends Component {
           </div>
         ) : (
           <div className="list">
-            <p className="list-item">
-              {kas > 0 ? (
-                numberFormat(kas)
-              ) : (
-                <span style={{ fontWeight: "normal" }}>-</span>
-              )}
+            <p
+              className="list-item"
+              style={{ color: kas < 1 ? "red" : "black" }}
+            >
+              {numberFormat(kas)}
             </p>
           </div>
         )}
