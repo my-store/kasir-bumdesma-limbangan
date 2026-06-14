@@ -125,11 +125,11 @@ export default class Laporan extends Component {
             ],
           },
 
-          // Line color
+          // Line color - Updated 14-6-2026
           colors: [
-            "#34eb5e", // Hijau
-            "#42daf5", // Biru
-            "#eb3468", // Merah
+            "#42daf5", // Omset
+            "#34eb5e", // Pendapatan/ Margin
+            "#eb3468", // Biaya
           ],
 
           // Label jumlah pada garis
