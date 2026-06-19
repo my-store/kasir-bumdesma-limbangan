@@ -3,8 +3,8 @@ import "../../../scss/mesin-kasir/transaksi/index.scss";
 import { numberFormat } from "../../api/helper/string";
 import { FiTrash2, FiPrinter } from "react-icons/fi";
 import ReactToPrint from "react-to-print";
-import Loading from "react-loading";
 import React, { Component } from "react";
+import Loading from "react-loading";
 import Print from "./print";
 
 export default class Main extends Component {
@@ -59,8 +59,8 @@ export default class Main extends Component {
         <span className="tambahan">
           {parseInt(operasional.biaya) > 0
             ? operasional.keterangan.toUpperCase() +
-              ": Rp" +
-              numberFormat(operasional.biaya)
+            ": Rp" +
+            numberFormat(operasional.biaya)
             : null}
         </span>
         <span className="total">
@@ -70,26 +70,17 @@ export default class Main extends Component {
     );
   };
 
-  print = async () => {
-    let data = [];
-    for (let x = 0; x < data.length; x++) {
-      //
-    }
-    Print._produk({
-      id: "PDF",
-      body: {
-        id: "Transaksi",
-        list: data,
-      },
-    });
-  };
-
   render() {
-    const { workTime, login } = this.props;
+    const { workTime, login, transaksi } = this.props;
     const indexBulan = indexOf(workTime.bulanIni) + 1; // Index dimulai dari 0
 
     // Data transaksi
-    const _trsData = this.props.transaksi.daftar;
+    const _trsData = transaksi.daftar;
+
+    // 19-06-2026
+    const jumlahTransaksi = transaksi.total > 0
+      ? numberFormat(transaksi.total) + "x"
+      : "-"
 
     return (
       <div className="transaksi">
@@ -109,9 +100,7 @@ export default class Main extends Component {
             </span>
           </span>
           <span style={{ fontWeight: "normal", fontSize: 13 }}>
-            {this.props.transaksi.total > 0
-              ? numberFormat(this.props.transaksi.total) + "x"
-              : "-"}
+            {jumlahTransaksi}
           </span>
         </h1>
         <div className="list-header">
@@ -155,8 +144,8 @@ export default class Main extends Component {
                         produk.length < 2
                           ? parseInt(operasional.biaya) > 0
                             ? operasional.keterangan +
-                              " Rp" +
-                              numberFormat(operasional.biaya)
+                            " Rp" +
+                            numberFormat(operasional.biaya)
                             : null
                           : null
                       }

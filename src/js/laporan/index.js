@@ -343,7 +343,7 @@ export default class Laporan extends Component {
                 className="total-form-label"
                 title={numberFormat(this.state.totalOmset)}
               >
-                <span style={{ backgroundColor: "#34eb5e" }}></span>
+                <span style={{ backgroundColor: "#42daf5" }}></span>
                 {"Rp " + reformatNumber(this.state.totalOmset)}
               </p>
             )}
@@ -354,7 +354,7 @@ export default class Laporan extends Component {
                 className="total-form-label"
                 title={numberFormat(this.state.totalMargin)}
               >
-                <span style={{ backgroundColor: "#42daf5" }}></span>
+                <span style={{ backgroundColor: "#34eb5e" }}></span>
                 {"Rp " + reformatNumber(this.state.totalMargin)}
               </p>
             )}
