@@ -18,7 +18,11 @@ export const GetOperasional = async (workTime) => {
   });
 
   // Prepare default response data
-  let response = { data: [], perolehan: 0 };
+  let response = {
+    data: [],
+    perolehanBulanIni: 0, // Total bulan ini (worktime)
+    perolehan: 0, // Total s/d bulan ini (worktime)
+  };
 
   for (let data of _getData) {
     // Tahun ini
@@ -28,12 +32,16 @@ export const GetOperasional = async (workTime) => {
       if (step1) {
         continue;
       } else {
-        // Poduk ditambahkan bulan ini, tapi tanggal lebih baru dari worktime
+        // Poduk ditambahkan bulan ini
         if (data.timestamp.bulan == workTime.bulanIni) {
+          // Tapi tanggal lebih baru dari worktime
           const step2 = data.timestamp.tanggal > workTime.tanggal;
           if (step2) {
+            // Maka lewati saja
             continue;
           }
+          // Tanggal lebih lama dari workTime, maka ambil data
+          response.perolehanBulanIni += parseInt(data.jumlah);
         }
       }
     }

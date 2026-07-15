@@ -44,9 +44,7 @@ export const GetLaporan = async (workTime) => {
   const getTransaksi = await GetWhereTransaksi({
     filter: {
       timestamp: {
-        tahun: {
-          $lte: workTime.tahun,
-        },
+        tahun: { $lte: workTime.tahun },
       },
     },
   });
@@ -268,10 +266,65 @@ async function getTabledata(workTime, DATA) {
 
       let _totalPertransaksi = 0; // Default as placeholder
 
+      // s/d Bulan lalu
+      if (indexOf(_trs.timestamp.bulan) < indexOf(bulanIni)) {
+        // Obat
+        if (tipeProduk == "Obat") {
+          // Margin per transaksi
+          _totalPertransaksi = hargaJual - hargaPokok;
+          // Kalikan jumlah pembelian
+          _totalPertransaksi *= beli;
+          // Tambahkan biaya tambahan
+          _totalPertransaksi += _ops;
+
+          // Increase pendapatan obat s/d bulan lalu
+          pendapatan.bulanLalu.obatPertanian += _totalPertransaksi;
+
+          // Increase pendapatan obat s/d bulan ini
+          pendapatan.bulanDepan.obatPertanian += _totalPertransaksi;
+        }
+        // Pupuk
+        else if (tipeProduk == "Pupuk") {
+          // Margin per transaksi
+          _totalPertransaksi = hargaJual - hargaPokok;
+          // Kalikan jumlah pembelian
+          _totalPertransaksi *= beli;
+          // Tambahkan biaya tambahan
+          _totalPertransaksi += _ops;
+
+          // Increase pendapatan pupuk s/d bulan lalu
+          pendapatan.bulanLalu.pupuk += _totalPertransaksi;
+
+          // Increase pendapatan pupuk s/d bulan ini
+          pendapatan.bulanDepan.pupuk += _totalPertransaksi;
+        }
+        // Pupuk Subsidi
+        else if (tipeProduk == "PupukSubsidi") {
+          // Margin per transaksi
+          _totalPertransaksi = hargaJual - hargaPokok;
+          // Kalikan jumlah pembelian
+          _totalPertransaksi *= beli;
+          // Tambahkan biaya tambahan
+          _totalPertransaksi += _ops;
+
+          // Increase pendapatan pupuk subsidi s/d bulan lalu
+          pendapatan.bulanLalu.pupukSubsidi += _totalPertransaksi;
+
+          // Increase pendapatan pupuk subsidi s/d bulan ini
+          pendapatan.bulanDepan.pupukSubsidi += _totalPertransaksi;
+        }
+
+        // Increase TOTAL pendapatan bulan ini
+        total.bulanLalu += _totalPertransaksi;
+
+        // Increase TOTAL pendapatan bulan ini
+        total.bulanDepan += _totalPertransaksi;
+      }
+
       // Bulan ini
       // Fixed bugs:
       // 10-06-2026 - Add tahun checking in line 329
-      if (
+      else if (
         _trs.timestamp.bulan == bulanIni &&
         _trs.timestamp.tahun == workTime.tahun
       ) {
@@ -327,61 +380,6 @@ async function getTabledata(workTime, DATA) {
         // Increase TOTAL pendapatan bulan ini
         total.bulanDepan += _totalPertransaksi;
       }
-
-      // s/d Bulan lalu
-      else {
-        // Obat
-        if (tipeProduk == "Obat") {
-          // Margin per transaksi
-          _totalPertransaksi = hargaJual - hargaPokok;
-          // Kalikan jumlah pembelian
-          _totalPertransaksi *= beli;
-          // Tambahkan biaya tambahan
-          _totalPertransaksi += _ops;
-
-          // Increase pendapatan obat s/d bulan lalu
-          pendapatan.bulanLalu.obatPertanian += _totalPertransaksi;
-
-          // Increase pendapatan obat s/d bulan ini
-          pendapatan.bulanDepan.obatPertanian += _totalPertransaksi;
-        }
-        // Pupuk
-        else if (tipeProduk == "Pupuk") {
-          // Margin per transaksi
-          _totalPertransaksi = hargaJual - hargaPokok;
-          // Kalikan jumlah pembelian
-          _totalPertransaksi *= beli;
-          // Tambahkan biaya tambahan
-          _totalPertransaksi += _ops;
-
-          // Increase pendapatan pupuk s/d bulan lalu
-          pendapatan.bulanLalu.pupuk += _totalPertransaksi;
-
-          // Increase pendapatan pupuk s/d bulan ini
-          pendapatan.bulanDepan.pupuk += _totalPertransaksi;
-        }
-        // Pupuk Subsidi
-        else if (tipeProduk == "PupukSubsidi") {
-          // Margin per transaksi
-          _totalPertransaksi = hargaJual - hargaPokok;
-          // Kalikan jumlah pembelian
-          _totalPertransaksi *= beli;
-          // Tambahkan biaya tambahan
-          _totalPertransaksi += _ops;
-
-          // Increase pendapatan pupuk subsidi s/d bulan lalu
-          pendapatan.bulanLalu.pupukSubsidi += _totalPertransaksi;
-
-          // Increase pendapatan pupuk subsidi s/d bulan ini
-          pendapatan.bulanDepan.pupukSubsidi += _totalPertransaksi;
-        }
-
-        // Increase TOTAL pendapatan bulan ini
-        total.bulanLalu += _totalPertransaksi;
-
-        // Increase TOTAL pendapatan bulan ini
-        total.bulanDepan += _totalPertransaksi;
-      }
     }
   }
 
@@ -394,10 +392,38 @@ async function getTabledata(workTime, DATA) {
     const _bo = _getBiaya[x];
     const { tipe } = _bo;
 
+    // s/d Bulan lalu
+    if (indexOf(_bo.timestamp.bulan) < indexOf(bulanIni)) {
+      if (tipe == "Honor") {
+        biaya.bulanLalu.honor += parseInt(_bo.jumlah);
+
+        // Increase honor s/d bulan ini
+        biaya.bulanDepan.honor += parseInt(_bo.jumlah);
+      }
+      if (tipe == "Transport") {
+        biaya.bulanLalu.transport += parseInt(_bo.jumlah);
+
+        // Increase transport s/d bulan ini
+        biaya.bulanDepan.transport += parseInt(_bo.jumlah);
+      }
+      if (tipe == "Lainnya") {
+        biaya.bulanLalu.lainnya += parseInt(_bo.jumlah);
+
+        // Increase lainnya s/d bulan ini
+        biaya.bulanDepan.lainnya += parseInt(_bo.jumlah);
+      }
+
+      // Decrease total s/d bulan lalu
+      total.bulanLalu -= parseInt(_bo.jumlah);
+
+      // Decrease total s/d bulan ini
+      total.bulanDepan -= parseInt(_bo.jumlah);
+    }
+
     // Bulan ini
     // Fixed bugs:
     // 10-06-2026 - Add tahun checking in line 428
-    if (
+    else if (
       _bo.timestamp.bulan == bulanIni &&
       _bo.timestamp.tahun == workTime.tahun
     ) {
@@ -422,34 +448,6 @@ async function getTabledata(workTime, DATA) {
 
       // Decrease total bulan ini
       total.bulanIni -= parseInt(_bo.jumlah);
-
-      // Decrease total s/d bulan ini
-      total.bulanDepan -= parseInt(_bo.jumlah);
-    }
-
-    // s/d Bulan lalu
-    else {
-      if (tipe == "Honor") {
-        biaya.bulanLalu.honor += parseInt(_bo.jumlah);
-
-        // Increase honor s/d bulan ini
-        biaya.bulanDepan.honor += parseInt(_bo.jumlah);
-      }
-      if (tipe == "Transport") {
-        biaya.bulanLalu.transport += parseInt(_bo.jumlah);
-
-        // Increase transport s/d bulan ini
-        biaya.bulanDepan.transport += parseInt(_bo.jumlah);
-      }
-      if (tipe == "Lainnya") {
-        biaya.bulanLalu.lainnya += parseInt(_bo.jumlah);
-
-        // Increase lainnya s/d bulan ini
-        biaya.bulanDepan.lainnya += parseInt(_bo.jumlah);
-      }
-
-      // Decrease total s/d bulan lalu
-      total.bulanLalu -= parseInt(_bo.jumlah);
 
       // Decrease total s/d bulan ini
       total.bulanDepan -= parseInt(_bo.jumlah);

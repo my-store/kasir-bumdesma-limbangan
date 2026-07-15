@@ -25,6 +25,7 @@ export default class Operasional extends Component {
 
       data: [],
       perolehan: 0,
+      perolehanBulanIni: 0,
     };
   }
 
@@ -33,12 +34,13 @@ export default class Operasional extends Component {
   }
 
   loadData = async () => {
-    const { data, perolehan } = await GetOperasional(this.props.workTime);
+    const { data, perolehan, perolehanBulanIni } = await GetOperasional(this.props.workTime);
 
     // Update state
     this.setState({
       data,
       perolehan,
+      perolehanBulanIni,
       openForm: {
         insert: false,
         update: false,
@@ -75,7 +77,7 @@ export default class Operasional extends Component {
   render() {
     const { theme, workTime, dataToko, login, confirmPage } = this.props;
     const { tahun, bulanIni, tanggal } = workTime;
-    const { data, perolehan, openForm, updateFormData } = this.state;
+    const { data, perolehan, perolehanBulanIni, openForm, updateFormData } = this.state;
 
     return (
       <div className="operasional">
@@ -106,11 +108,11 @@ export default class Operasional extends Component {
                     className="tr-td"
                     key={index}
 
-                    // Update 2025
-                    // style={{
-                    //   color:
-                    //     timestamp.bulan == workTime.bulanIni ? "red" : null,
-                    // }}
+                  // Update 2025
+                  // style={{
+                  //   color:
+                  //     timestamp.bulan == workTime.bulanIni ? "red" : null,
+                  // }}
                   >
                     <p className="no">{index + 1}</p>
                     <p className="keterangan">{d.keterangan}</p>
@@ -161,7 +163,7 @@ export default class Operasional extends Component {
 
           <div className="total">
             <p className="label">
-              Rp {perolehan > 0 ? numberFormat(perolehan) : "-"}
+              Keseluruhan: Rp {perolehan > 0 ? numberFormat(perolehan) : "-"} | Bulan ini: Rp {perolehanBulanIni > 0 ? numberFormat(perolehanBulanIni) : "-"}
             </p>
             <div
               className="action"
