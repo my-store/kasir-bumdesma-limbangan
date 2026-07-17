@@ -34,7 +34,9 @@ export default class Operasional extends Component {
   }
 
   loadData = async () => {
-    const { data, perolehan, perolehanBulanIni } = await GetOperasional(this.props.workTime);
+    const { data, perolehan, perolehanBulanIni } = await GetOperasional(
+      this.props.workTime,
+    );
 
     // Update state
     this.setState({
@@ -77,7 +79,8 @@ export default class Operasional extends Component {
   render() {
     const { theme, workTime, dataToko, login, confirmPage } = this.props;
     const { tahun, bulanIni, tanggal } = workTime;
-    const { data, perolehan, perolehanBulanIni, openForm, updateFormData } = this.state;
+    const { data, perolehan, perolehanBulanIni, openForm, updateFormData } =
+      this.state;
 
     return (
       <div className="operasional">
@@ -102,28 +105,31 @@ export default class Operasional extends Component {
           <div className="td">
             {data.length > 0 ? (
               data.map((d, index) => {
-                // const { timestamp } = d;
+                const { timestamp } = d;
                 return (
                   <div
                     className="tr-td"
                     key={index}
-
-                  // Update 2025
-                  // style={{
-                  //   color:
-                  //     timestamp.bulan == workTime.bulanIni ? "red" : null,
-                  // }}
+                    // Update 2026
+                    // Add red mark for this mount in this year
+                    style={{
+                      color:
+                        timestamp.tahun == workTime.tahun &&
+                        timestamp.bulan == workTime.bulanIni
+                          ? "#e00404"
+                          : "#000",
+                    }}
                   >
                     <p className="no">{index + 1}</p>
                     <p className="keterangan">{d.keterangan}</p>
                     <p className="tanggal">
-                      {d.timestamp.hari +
+                      {timestamp.hari +
                         ", " +
-                        d.timestamp.tanggal +
+                        timestamp.tanggal +
                         " " +
-                        d.timestamp.bulan +
+                        timestamp.bulan +
                         " " +
-                        d.timestamp.tahun}
+                        timestamp.tahun}
                     </p>
                     <p className="tipe">{d.tipe}</p>
                     <p className="jumlah">Rp {numberFormat(d.jumlah)}</p>
@@ -143,7 +149,7 @@ export default class Operasional extends Component {
                                 this.deleteData(d.id);
                               },
                               "Hapus Operasional",
-                              d.keterangan
+                              d.keterangan,
                             );
                           }}
                           width={14}
@@ -163,7 +169,10 @@ export default class Operasional extends Component {
 
           <div className="total">
             <p className="label">
-              Keseluruhan: Rp {perolehan > 0 ? numberFormat(perolehan) : "-"} | Bulan ini: Rp {perolehanBulanIni > 0 ? numberFormat(perolehanBulanIni) : "-"}
+              Bulan ini: Rp{" "}
+              {perolehanBulanIni > 0 ? numberFormat(perolehanBulanIni) : "-"}
+              {" | "}
+              s/d Bulan ini: Rp {perolehan > 0 ? numberFormat(perolehan) : "-"}
             </p>
             <div
               className="action"
